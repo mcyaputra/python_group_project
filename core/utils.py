@@ -10,48 +10,57 @@ file_handler = logging.FileHandler("logs.log")
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
 
-def merge_topics(topic1, topic2, topic3) -> str:
+def merge_keywords(keyword1=None, keyword2=None, keyword3=None) -> str:
         
-        # Combine all topics
-        topics = [topic1, topic2, topic3]
+	# Combine all keywords
+	keywords = [keyword1, keyword2, keyword3]
 
-        # Join all topics for url search
-        topics_url = " AND ".join([topic for topic in topics if topic])
+	# Join all keywords for url search
+	keywords_url = " OR ".join([keyword for keyword in keywords if keyword])
 
-        logger.info('Topics merged')
-        return topics_url
+	logger.info('Keywords merged')
 
-def merge_publishers(publisher1, publisher2, publisher3) -> str:
+	if keywords_url == '':
+		return None
+	else:
+		return keywords_url
+
+def merge_countries(country1=None, country2=None, country3=None) -> str:
         
-        # Combine all domains
-        publishers = [publisher1, publisher2, publisher3]
+	# Combine all countries
+	countries = [country1, country2, country3]
 
-        # Join all domains for url search
-        publishers_url = ", ".join([publisher for publisher in publishers if publisher])
+	# Join all countries for url search
+	countries_url = ",".join([country for country in countries if country])
 
-        logger.info('Publishers merged')
-        return publishers_url
+	logger.info('Countries merged')
 
-def unpack_response(results) -> list:
+	if countries_url == '':
+		return None
+	else:
+		return countries_url
 
-        # Create empty lists to hold all relevant values
-        source = []
-        author = []
-        title = []
-        description = []
-        url = []
-        publishedAt= []
-        content = []
+def unpack_response(result) -> list:
 
-        # Append all values into their respective list
-        for res in results:
-            source.append(res['source']['name'])
-            author.append(res['author'])
-            title.append(res['title'])
-            description.append(res['description'])
-            url.append(res['url'])
-            publishedAt.append(res['publishedAt'])
-            content.append(res['content'])
+	# Create empty lists to hold all relevant values
+	title = []
+	author = []
+	publish_date = []
+	content = []
+	url = []
+	sentiment = []
+	source_country = []
 
-        logger.info('Responses successfully unpacked')
-        return source, author, title, description, url, publishedAt, content
+	# Append all values into their respective list
+	for res in result['news']:
+		title.append(res['title'])
+		author.append(res['author'])
+		publish_date.append(res['publish_date'])
+		content.append(res['text'])
+		url.append(res['url'])
+		sentiment.append(res['sentiment'])
+		source_country.append(res['source_country'])
+
+	logger.info('Responses successfully unpacked')
+	return title, author, publish_date, content, url, sentiment, source_country
+
