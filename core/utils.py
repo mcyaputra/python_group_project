@@ -25,7 +25,35 @@ def merge_keywords(keyword1=None, keyword2=None, keyword3=None) -> str:
 	else:
 		return keywords_url
 
+def convert_countries_name_for_processing(country):
+    
+	if country == 'Australia':
+		result = 'au'
+	elif country == 'Europe':
+		result = 'eu'
+	elif country == 'US':
+		result = 'us'
+	elif country == 'UK':
+		result = 'gb'
+	elif country == 'China':
+		result = 'cn'
+	elif country == 'india':
+		result = 'in'
+	elif country == 'Japan':
+		result = 'jp'
+	elif country == 'Indonesia':
+		result = 'id'
+
+	return result
+
 def merge_countries(country1=None, country2=None, country3=None) -> str:
+
+	if country1:
+		country1 = convert_countries_name_for_processing(country1)
+	if country2:
+		country2 = convert_countries_name_for_processing(country2)
+	if country3:
+		country3 = convert_countries_name_for_processing(country3)
         
 	# Combine all countries
 	countries = [country1, country2, country3]

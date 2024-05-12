@@ -23,7 +23,7 @@ class NewsAPI:
                     keyword2=None,
                     keyword3=None,
                     language='en',
-                    country1='au',
+                    country1='Australia',
                     country2=None,
                     country3=None,
                     min_sentiment=-1,

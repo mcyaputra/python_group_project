@@ -4,17 +4,18 @@ from openai import OpenAI
 from core.utils import unpack_response
 from core.openai_api import OpenAISummariser
 
-
+'''
+    To get a free World News API KEY, go to: https://worldnewsapi.com/
+'''
 news_api_key = os.environ.get('WORLDNEWS_API_KEY')
 
+'''
+    To get a free OpenAI API KEY, go to: https://openai.com/index/openai-api/ 
+'''
 OPENAI_CLIENT = OpenAI(
 	api_key=os.environ.get("OPENAI_API_KEY")
 )
 open_AI = OpenAISummariser(openai_client=OPENAI_CLIENT)
-
-'''
-    To get free API KEY, go to: https://worldnewsapi.com/
-'''
 
 news_api = NewsAPI(news_api_key)
 
@@ -22,7 +23,9 @@ news_api = NewsAPI(news_api_key)
 keyword1 = "Cars" # Mandatory
 keyword2 = "" # Optional
 keyword3 = "" # Optional
-country1 = "au" # Optional, default is au
+
+# List of available countries: Australia, Europe, US, UK, China, India, Japan, Indonesia
+country1 = "Australia" # Optional, default is Australia
 country2 = "" # Optional
 country3 = "" # Optional
 min_sentiment = -1 # Optional, default is -1
@@ -51,4 +54,4 @@ title, author, publish_date, content, url, sentiment, source_country = unpack_re
 
 # Method to summarize news content in 250 words, highlighting 3-5 most important takeaways in bullet points
 # We can let users choose whether they want to get a quick summary or not based on title etc
-summary_result = open_AI.summarise_news_content(content[0]) ## TODO replace content with actual news content 
+summary_result = open_AI.summarise_news_content(content=content[0]) ## TODO replace content with actual news content

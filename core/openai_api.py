@@ -38,12 +38,23 @@ class OpenAISummariser:
         return result
     
     def summarise_news_content(self, 
-                               content):
-        prompt = f"""
-                You are a great article summarizer. 
-                Please summarize the following text into 200-250 words, highlighting the 3-5 most important takeaways for the readers:{content}
-                """
-            
+                               content,
+                               prompt_from_user=None
+                               ):
+
+        if prompt_from_user:
+            prompt = prompt_from_user
+        else:
+            prompt = f"""
+                        You are a great article summarizer. 
+                        Please summarize the following text into 200-250 words consisting of:
+                        1. Whats the article is about (1 paragraph)
+                        2. layout the 3-5 most important takeaways in bullet points:{content}
+                        3. Conclusion
+
+                        text={content}
+                        """
+
         result = self.execute_prompt(prompt=prompt)
 		
         logger.info("Successfully summarize news content")
