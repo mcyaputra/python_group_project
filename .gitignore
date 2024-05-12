@@ -1,4 +1,4 @@
 **/.DS_Store
 *.ipynb
 logs.log
-core/__pycache__
+core/__pycache__/

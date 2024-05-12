@@ -51,6 +51,7 @@ class NewsAPI:
             'x-api-key': self.newsapi_client
         }
         
+        # Run request
         try:
             response = requests.get(url, headers=headers)
         except Exception as e:

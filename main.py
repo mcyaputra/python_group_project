@@ -3,11 +3,13 @@ from core.worldnews_api import NewsAPI
 from openai import OpenAI
 from core.utils import unpack_response
 from core.openai_api import OpenAISummariser
+from core.visualization import VisualizeWords
 
 '''
     To get a free World News API KEY, go to: https://worldnewsapi.com/
 '''
 news_api_key = os.environ.get('WORLDNEWS_API_KEY')
+news_api = NewsAPI(news_api_key)
 
 '''
     To get a free OpenAI API KEY, go to: https://openai.com/index/openai-api/ 
@@ -15,10 +17,9 @@ news_api_key = os.environ.get('WORLDNEWS_API_KEY')
 OPENAI_CLIENT = OpenAI(
 	api_key=os.environ.get("OPENAI_API_KEY")
 )
-open_AI = OpenAISummariser(openai_client=OPENAI_CLIENT)
+open_ai = OpenAISummariser(openai_client=OPENAI_CLIENT)
 
-news_api = NewsAPI(news_api_key)
-
+# -----------------------------1. News API --------------------------
 # TODO Replace below with actual inputs
 keyword1 = "Cars" # Mandatory
 keyword2 = "" # Optional
@@ -52,6 +53,18 @@ search_result = news_api.search_news(
 # Unpack search result
 title, author, publish_date, content, url, sentiment, source_country = unpack_response(search_result)
 
-# Method to summarize news content in 250 words, highlighting 3-5 most important takeaways in bullet points
+
+# -----------------------------2. Article summary --------------------------
+# Method to summarize news content into 200-250 words, highlighting 3-5 most important takeaways in bullet points
 # We can let users choose whether they want to get a quick summary or not based on title etc
-summary_result = open_AI.summarise_news_content(content=content[0]) ## TODO replace content with actual news content
+summary_result = open_ai.summarise_news_content(content=content[0]) ## TODO replace with actual news content
+
+
+
+# -----------------------------3. Visualizing words using word cloud --------------------------
+visualization = VisualizeWords(text=content[0]) ## TODO replace with actual news content
+visualization.visualize_words()
+
+
+
+
