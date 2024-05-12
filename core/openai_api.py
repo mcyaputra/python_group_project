@@ -42,6 +42,7 @@ class OpenAISummariser:
                                prompt_from_user=None
                                ):
 
+        # If no prompt parameter is supplied, use default
         if prompt_from_user:
             prompt = prompt_from_user
         else:

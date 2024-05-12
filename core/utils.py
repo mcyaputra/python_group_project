@@ -20,6 +20,7 @@ def merge_keywords(keyword1=None, keyword2=None, keyword3=None) -> str:
 
 	logger.info('Keywords merged')
 
+	# Return result if not empty
 	if keywords_url == '':
 		return None
 	else:
@@ -27,6 +28,7 @@ def merge_keywords(keyword1=None, keyword2=None, keyword3=None) -> str:
 
 def convert_countries_name_for_processing(country):
     
+	# Convert country name into another format
 	if country == 'Australia':
 		result = 'au'
 	elif country == 'Europe':
@@ -48,6 +50,7 @@ def convert_countries_name_for_processing(country):
 
 def merge_countries(country1=None, country2=None, country3=None) -> str:
 
+	# Convert country names into required formats
 	if country1:
 		country1 = convert_countries_name_for_processing(country1)
 	if country2:
