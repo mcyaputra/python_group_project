@@ -1,0 +1,4 @@
+**/.DS_Store
+*.ipynb
+logs.log
+core/__pycache__
