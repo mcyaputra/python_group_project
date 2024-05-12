@@ -52,5 +52,3 @@ title, author, publish_date, content, url, sentiment, source_country = unpack_re
 # Method to summarize news content in 250 words, highlighting 3-5 most important takeaways in bullet points
 # We can let users choose whether they want to get a quick summary or not based on title etc
 summary_result = open_AI.summarise_news_content(content[0]) ## TODO replace content with actual news content 
-
-print(summary_result)
