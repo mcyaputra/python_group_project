@@ -16,7 +16,7 @@ def merge_keywords(keyword1=None, keyword2=None, keyword3=None) -> str:
 	keywords = [keyword1, keyword2, keyword3]
 
 	# Join all keywords for url search
-	keywords_url = " OR ".join([keyword for keyword in keywords if keyword])
+	keywords_url = "%OR%".join([keyword for keyword in keywords if keyword])
 
 	logger.info('Keywords merged')
 
@@ -85,7 +85,7 @@ def unpack_response(result) -> list:
 	# Append all values into their respective list
 	for res in result['news']:
 		title.append(res['title'])
-		author.append(res['author'])
+		author.append(res['authors'])
 		publish_date.append(res['publish_date'])
 		content.append(res['text'])
 		url.append(res['url'])

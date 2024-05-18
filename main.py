@@ -21,9 +21,9 @@ open_ai = OpenAISummariser(openai_client=OPENAI_CLIENT)
 
 # -----------------------------1. News API --------------------------
 # TODO Replace below with actual inputs
-keyword1 = "Cars" # Mandatory
-keyword2 = "" # Optional
-keyword3 = "" # Optional
+keyword1 = "Tesla" # Mandatory
+keyword2 = "Toyota" # Optional
+keyword3 = "Ford" # Optional
 
 # List of available countries: Australia, Europe, US, UK, China, India, Japan, Indonesia
 country1 = "Australia" # Optional, default is Australia
@@ -31,12 +31,12 @@ country2 = "" # Optional
 country3 = "" # Optional
 min_sentiment = -1 # Optional, default is -1
 max_sentiment = 1 # Optional, default is 1
-from_date = '2024-05-11' # Optional, need to set default -1 day from today in GUI
-to_date =  '2024-05-12' # Optional, need to set default to today in GUI
+from_date = '2024-05-16' # Optional, need to set default -1 day from today in GUI
+to_date =  '2024-05-17' # Optional, need to set default to today in GUI
 article_to_show = 5 # Optional, default is 5
 
 # Execute search
-search_result = news_api.search_news(
+search_result, status = news_api.search_news(
                         keyword1=keyword1,
                         keyword2=keyword2,
                         keyword3=keyword3,
