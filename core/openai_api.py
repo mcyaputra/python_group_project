@@ -50,7 +50,7 @@ class OpenAISummariser:
                         You are a great article summarizer. 
                         Please summarize the following text into 200-250 words consisting of:
                         1. Whats the article is about (1 paragraph)
-                        2. layout the 3-5 most important takeaways in bullet points:{content}
+                        2. layout the 3-5 most important takeaways in bullet points
                         3. Conclusion
 
                         text={content}

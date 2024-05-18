@@ -40,12 +40,8 @@ class NewsAPI:
         # Combine all countries
         countries = merge_countries(country1, country2, country3)
         
-        # Set up URL
-        if keywords == '':
-            url = f"https://api.worldnewsapi.com/search-news?text={keywords}&language={language}&source-countries={countries}&min-sentiment={min_sentiment}&max-sentiment={max_sentiment}&earliest-publish-date={from_date}&latest-publish-date={to_date}&sort={sort}&sort-direction={sort_direction}&number={article_to_show}"
-        else:
-            url = f"https://api.worldnewsapi.com/search-news?language={language}&source-countries={countries}&min-sentiment={min_sentiment}&max-sentiment={max_sentiment}&earliest-publish-date={from_date}&latest-publish-date={to_date}&sort={sort}&sort-direction={sort_direction}&number={article_to_show}"
-        
+        url = f"https://api.worldnewsapi.com/search-news?text={keywords}&language={language}&source-countries={countries}&min-sentiment={min_sentiment}&max-sentiment={max_sentiment}&earliest-publish-date={from_date}&latest-publish-date={to_date}&sort={sort}&sort-direction={sort_direction}&number={article_to_show}"
+
         # Set up API key
         headers = {
             'x-api-key': self.newsapi_client
@@ -60,7 +56,8 @@ class NewsAPI:
         if response.status_code == 200:
             result = response.json()
             logger.info('Topic API call successful')
+            return result, response.status_code
         else:
             logger.error(f"Error: {response.status_code}")
 
-        return result
+        
