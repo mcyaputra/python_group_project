@@ -25,7 +25,7 @@ root.option_add('*foreground', 'black')
     To get a free World News API KEY, go to: https://worldnewsapi.com/
 '''
 # Initializing WorldnewsAPI
-news_api_key = "3f25c7384b8f4d34b2f881600216e83a"
+news_api_key = "Enter your API KEY"
 news_api = NewsAPI(news_api_key)
 
 # Queueing for thread communication
@@ -156,7 +156,7 @@ def set_status(message):
 '''
 #Initializing OpenAI client
 OPENAI_CLIENT = OpenAI(
-    api_key="sk-proj-qA1bMNyPvHYlFX930y9aT3BlbkFJTjRhh6I5J0Pa5Y5cPY0Q"
+    api_key="Enter your API KEY"
     # api_key=os.environ.get("OPENAI_API_KEY")
 )
 open_ai = OpenAISummariser(openai_client=OPENAI_CLIENT)
