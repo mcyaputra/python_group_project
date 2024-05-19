@@ -6,9 +6,6 @@ import requests
 from io import StringIO
 from bs4 import BeautifulSoup
 import tkinter as tk
-import sys, os
-# Adding the directory containing 'core' to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from core.web_scrape import web_scrape, clean_summary, display_dataframe
 
 class TestWebScrape(unittest.TestCase):

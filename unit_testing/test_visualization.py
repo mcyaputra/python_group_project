@@ -1,12 +1,9 @@
 import unittest
 import pandas as pd
 import os
-import sys
+
 from unittest.mock import patch
 from io import StringIO
-# Adding the directory containing 'core' to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from core.visualization import load_data, plot_sentiment_vs_author, plot_sentiment_vs_title, plot_publish_date_vs_author, plot_publish_date_vs_title
 
 class TestVisualizationModule(unittest.TestCase):

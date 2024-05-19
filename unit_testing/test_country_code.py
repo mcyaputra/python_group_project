@@ -1,7 +1,4 @@
 import unittest
-import os, sys
-# Adding the directory containing 'core' to the Python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from core.country_code import country_code
 
 
