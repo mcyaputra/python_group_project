@@ -4,15 +4,15 @@ Hi, this a Python program that compiles and aggregates news articles from variou
 ## Project Organization
 ------------
 
-├── main.py                <- Main entry point to the app
-├── requirements.txt       <- required packages to run the app
-├── README.md              <- The top-level README for developers using this project.
-├── core
-    ├── openai_api.py      <- Scripts to run OpenAI
-    ├── utils.py           <- Utility functions to support the app
-    ├── worldnews_api.py   <- Scripts to run WorldNews API
-    ├── visualizations.py  <- Scripts to run visualizations
-├── tests                  <- Folder containing test scripts to test all the classes and methods
+    ├── main.py                <- Main entry point to the app
+    ├── requirements.txt       <- required packages to run the app
+    ├── README.md              <- The top-level README for developers using this project.
+    ├── core
+        ├── openai_api.py      <- Scripts to run OpenAI
+        ├── utils.py           <- Utility functions to support the app
+        ├── worldnews_api.py   <- Scripts to run WorldNews API
+        ├── visualizations.py  <- Scripts to run visualizations
+    ├── tests                  <- Folder containing test scripts to test all the classes and methods
 
 ------------
 ## ⚙️ How to run the app
