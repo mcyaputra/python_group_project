@@ -2,6 +2,8 @@
 Hi, this a Python program that compiles and aggregates news articles from various sources using both web APIs and web scraping techniques. The aim is to integrate data from multiple sources, offering users richer content compared to just relying on a single news outlet. It involves building an interactive, flexible and well-structured data aggregator. The program follows object-oriented programming principles for scalability and modularity. It also includes unit testing to ensure codes are reliable and perform as expected and required. Additionally, a GUI component are added on top of the program to enhance user experience and allow for real-time exploration of news content.
 
 ## Project Organization
+------------
+
 ├── main.py                <- Main entry point to the app
 ├── requirements.txt       <- required packages to run the app
 ├── README.md              <- The top-level README for developers using this project.
@@ -11,6 +13,8 @@ Hi, this a Python program that compiles and aggregates news articles from variou
     ├── worldnews_api.py   <- Scripts to run WorldNews API
     ├── visualizations.py  <- Scripts to run visualizations
 ├── tests                  <- Folder containing test scripts to test all the classes and methods
+
+------------
 
 ## ⚙️ How to run the app
 1. Clone this repo into your desired folder
