@@ -1,72 +1,95 @@
-from collections import Counter
-import nltk
-from nltk.corpus import stopwords
-from matplotlib import pyplot as plt
-from wordcloud import WordCloud
-import string
-import logging
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
 
-# Set up logs
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(funcName)s:%(message)s")
+def load_data(csv_file_path):
+    """
+    Loading the CSV data into a Pandas DataFrame.
+    """
+    try:
+        return pd.read_csv(csv_file_path)
+    except FileNotFoundError:
+        print(f"Error: The file at path {csv_file_path} was not found.")
+        raise
 
-# Save logs in a log file
-file_handler = logging.FileHandler("logs.log")
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+def plot_sentiment_vs_author(df):
+    """
+    Plotting sentiment vs. author.
+    """
+    plt.figure(figsize=(10, 6))
+    plt.bar(df['author'], df['sentiment'], color='skyblue')
+    plt.title('Sentiment vs. Author')
+    plt.xlabel('Author')
+    plt.ylabel('Sentiment')
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.show()
 
-class VisualizeWords:
+def plot_sentiment_vs_title(df):
+    """
+    Plotting sentiment vs. title using a horizontal bar chart.
+    """
+    plt.figure(figsize=(10, 6))
+    plt.barh(df['title'], df['sentiment'], color='green')
+    plt.title('Title vs. Sentiment')
+    plt.xlabel('Sentiment')
+    plt.ylabel('Title')
+    plt.tight_layout()
+    plt.show()
 
-    def __init__(self, text=None):
-        self.text = text
+
+
+def plot_publish_date_vs_author(df):
+    """
+    Plotting publish date vs. author.
+    """
+    plt.figure(figsize=(10, 6))
+    df['publish_date'] = pd.to_datetime(df['publish_date'])
+    plt.plot(df['author'], df['publish_date'],linestyle='-', marker='o', color='red')
+    plt.title('Publish Date vs. Author')
+    plt.xlabel('Author')
+    plt.ylabel('Publish Date')
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.show()
+
+def plot_publish_date_vs_title(df):
+    """
+    Plotting publish date vs. title using a line plot.
+    """
+    plt.figure(figsize=(10, 6))
+    df['publish_date'] = pd.to_datetime(df['publish_date'])
+    plt.plot(df['title'], df['publish_date'], linestyle='-', marker='o', color='purple')
+    plt.title('Publish Date vs. Title')
+    plt.xlabel('Title')
+    plt.ylabel('Publish Date')
+    plt.xticks(rotation=90)
+    plt.tight_layout() # Adjusting plot to ensure everything fits without overlapping
+    plt.show()
+
+
+def generate_visualizations():
+    """
+    Generating and displaying visualizations based on the provided CSV file.
     
-    def tokenize_words(self, text) -> list:
+    """
+    
+    # Defining the CSV file path, adjusting to the project root
+    csv_file_path = os.path.join('data', 'news_data_web_scrap.csv')
+    
+    # Debugging: Print the current working directory
+    print(f"Current working directory: {os.getcwd()}")
+    
+    # Debug: Checking if the file exists
+    if not os.path.isfile(csv_file_path):
+        print(f"Error: The file at path {csv_file_path} does not exist.")
+    else:
+        # Loading the data
+        df = load_data(csv_file_path)
         
-        # Tokenize text
-        try:
-            tokens = nltk.word_tokenize(text.lower())
-
-            logger.info("Successfully tokenize text")
-            return tokens
-        
-        except Exception as e:
-            logger.error(f"Error: {e}")
-
-    def remove_stop_words(self, tokens) -> list:
-
-        # Set up list of words and punctuations to remove
-        stop_words = set(stopwords.words("English"))
-        punctuations = set(string.punctuation)
-        additional_stop_words = ("'s", "``", "`", "''", "'", "'d", "'ve", "said", "lot", "get", "take", "like", "'re", "n't", "'ll")
-
-        # Remove unwanted words and punctuations
-        try:
-            tokens_filtered = [word for word in tokens if word not in stop_words and word not in punctuations and word not in additional_stop_words]
-
-            logger.info("Successfully remove stop words")
-            return tokens_filtered
-        
-        except Exception as e:
-            logger.error(f"Error: {e}")
-
-    def visualize_words(self, text=None):
-        
-        # Tokenize words
-        tokens = self.tokenize_words(text=self.text)
-
-        # Remove stop words
-        tokens_filtered = self.remove_stop_words(tokens=tokens)
-
-        # Join words into a string
-        word_string = " ".join(tokens_filtered)
-
-        # Set up word cloud
-        word_cloud = WordCloud(background_color="white").generate(word_string)
-
-        logger.info("Successfully visualize words")
-
-        # Show word cloud
-        plt.figure(figsize = (10, 10))
-        plt.imshow(word_cloud)
-        plt.axis("off")
+    df = load_data(csv_file_path)
+    # Generating various plots
+    plot_sentiment_vs_author(df)
+    plot_sentiment_vs_title(df)
+    plot_publish_date_vs_author(df)
+    plot_publish_date_vs_title(df)
