@@ -1,4 +1,5 @@
 import logging
+from openai import OpenAI
 
 # Set up logs
 logger = logging.getLogger(__name__)
@@ -50,7 +51,7 @@ class OpenAISummariser:
                         You are a great article summarizer. 
                         Please summarize the following text into 200-250 words consisting of:
                         1. Whats the article is about (1 paragraph)
-                        2. layout the 3-5 most important takeaways in bullet points
+                        2. layout the 3-5 most important takeaways in bullet points:{content}
                         3. Conclusion
 
                         text={content}

@@ -1,3 +1,5 @@
+# python_group_project
+
 ## 📝 Description
 Hi, this a Python program that compiles and aggregates news articles from various sources using both web APIs and web scraping techniques. The aim is to integrate data from multiple sources, offering users richer content compared to just relying on a single news outlet. It involves building an interactive, flexible and well-structured data aggregator. The program follows object-oriented programming principles for scalability and modularity. It also includes unit testing to ensure codes are reliable and perform as expected and required. Additionally, a GUI component are added on top of the program to enhance user experience and allow for real-time exploration of news content.
 
@@ -5,22 +7,25 @@ Hi, this a Python program that compiles and aggregates news articles from variou
 ------------
 
     ├── main.py                <- Main entry point to the app
+    ├── test_runner.py         <- Scripts to run all the unit tests
     ├── requirements.txt       <- required packages to run the app
     ├── README.md              <- The top-level README for developers using this project.
     ├── core
         ├── openai_api.py      <- Scripts to run OpenAI
         ├── utils.py           <- Utility functions to support the app
         ├── worldnews_api.py   <- Scripts to run WorldNews API
-        ├── visualizations.py  <- Scripts to run visualizations
-    ├── tests                  <- Folder containing test scripts to test all the classes and methods
+        ├── visualization.py   <- Scripts to run visualizations
+        ├── web_scrape.py      <- Scripts for web scraping
+        ├── country_code.py    <- Scripts to convert country names to country codes
+    ├── unit_testing                  <- Folder containing test scripts to test all the classes and methods
 
 ------------
 ## ⚙️ How to run the app
 1. Clone this repo into your desired folder
 
-2. In your terminal, cd into project folder where you stored the cloned repo, run "pip install -r requirements.txt"
+2. In your terminal, cd into project folder where you stored the cloned repo, run "python3.9 -m pip install -r requirements.txt"
 
-3. In your terminal, run "python main.py"
+3. In your terminal, run "python3.9 main.py"
 
 4. UI should pops out
 
@@ -42,4 +47,6 @@ Hi, this a Python program that compiles and aggregates news articles from variou
 
 1. In your terminal, cd into project folder where you stored the cloned repo
 
-2. In your terminal, run "python -m unittest"
+2. In your terminal, run "python3.9 test_runner.py"
+
+Note: This application has been tested on Windows OS. Recommanded to run this app on Windows OS
